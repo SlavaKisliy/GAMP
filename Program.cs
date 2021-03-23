@@ -1,12 +1,12 @@
-﻿using System;
-
-namespace GAMPExample
+﻿namespace GAMP
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            GAMPSender sender = new GAMPSender();
+
+            sender.SendTransactionId().GetAwaiter().GetResult();
         }
     }
 }
