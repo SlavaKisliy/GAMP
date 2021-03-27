@@ -8,7 +8,7 @@ namespace GAMP
     {
         private const string Endpoint = "https://api.blockcypher.com/v1/btc/main";
 
-        public static async Task<string> GetLastTransactionHashAsync()
+        public static async Task<decimal> GetUnconfirmedTransCountAsync()
         {
             using var client = new HttpClient();
             
@@ -18,9 +18,9 @@ namespace GAMP
 
             dynamic blockchainObj = JsonConvert.DeserializeObject(resultJson);
 
-            string lastTransactionId = blockchainObj.last_fork_hash;
+            string countStr = blockchainObj.unconfirmed_count;
 
-            return lastTransactionId;
+            return decimal.Parse(countStr);
         }
     }
 }
